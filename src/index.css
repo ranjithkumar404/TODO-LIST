@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Gaegu&family=Pangolin&family=Rubik:wght@300&display=swap');
+body{
+    font-family: 'Gaegu', cursive;
+font-family: 'Pangolin', cursive;
+        font-family: 'Rubik', sans-serif;
+        font-weight: 500;
+}
