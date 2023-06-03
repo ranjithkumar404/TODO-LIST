@@ -32,12 +32,15 @@ function App() {
     }, 2000);
 
   }
+  const clear = () => {
+    setList([])
+  }
   const edit = (a) => {
 
   }
 
   return (
-    <div className="App flex justify-center  h-screen  items-center ">
+    <div className="App flex justify-center   h-screen  items-center ">
       <div className="shadow-md p-3 rounded-md gird  space-y-4 place-items-center  w-[700px] ">
         <p className="text-center text-2xl text-yellow-400">{msg}</p>
         <h1 className="text-4xl text-center">TODO-LIST</h1>
@@ -58,10 +61,13 @@ function App() {
                     <FiEdit onClick={() => edit(i)} className="cursor-pointer" size={20} />
                     <AiFillDelete onClick={() => dlt(i)} className="cursor-pointer" size={20} />
                   </div>
+
+
                 </div>
               )
             })
           }
+          <p className="text-center mt-3">{list.length === 0 ? <p></p> : <button className="bg-red-500 text-white px-3 py-1 rounded-md" onClick={() => clear()}>Clear items</button>}</p>
         </div>
       </div>
     </div>
