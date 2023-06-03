@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { AiFillDelete } from 'react-icons/ai';
+import { FiEdit } from 'react-icons/fi';
 
 function App() {
   const [val, setVal] = useState('')
@@ -6,12 +8,21 @@ function App() {
 
   const fun = (e) => {
     e.preventDefault();
-  
-   
-      setList( [...list, val]);
+    if (val.trim() == "") {
+      alert("Add something")
+    }
+    else {
 
-    
-    setVal("");
+      setList([...list, val]);
+      setVal("");
+    }
+  }
+  const dlt = (x) => {
+ setList((a) => {
+ let y = a.filter((r) => x !== r)
+ return y;
+    })
+
   }
 
   return (
@@ -29,8 +40,12 @@ function App() {
           {
             list.map((i, a) => {
               return (
-                <div key={a}>
+                <div className="justify-between flex items-center bg-slate-500/20 rounded-md mx-auto mt-2 w-[300px] p-2" key={a}>
                   <p>{i}</p>
+                  <div className="flex space-x-3">
+                    <FiEdit className="cursor-pointer" size={20} />
+                    <AiFillDelete onClick={() => dlt(i)} className="cursor-pointer" size={20} />
+                  </div>
                 </div>
               )
             })
