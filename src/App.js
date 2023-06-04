@@ -5,12 +5,15 @@ import { FiEdit } from 'react-icons/fi';
 function App() {
   const [val, setVal] = useState('')
   const [list, setList] = useState([])
-  const [msg, setMsg] = useState('dgdg')
+  const [msg, setMsg] = useState('')
 
   const fun = (e) => {
     e.preventDefault();
     if (val.trim() == "") {
-      alert("Add something")
+
+      setTimeout(() => {
+        setMsg('Invalid todo item')
+      }, 3000);
     }
     else {
       setList([...list, val]);
@@ -18,7 +21,7 @@ function App() {
       setMsg("New TODO has been added!!")
       setTimeout(() => {
         setMsg('')
-      }, 2000);
+      }, 3000);
     }
   }
   const dlt = (x) => {
@@ -29,20 +32,22 @@ function App() {
     setMsg("A TODO has been deleted!!")
     setTimeout(() => {
       setMsg('')
-    }, 2000);
+    }, 3000);
 
   }
   const clear = () => {
+
+    setTimeout(() => {
+      setMsg("All the items has been cleared")
+    }, 3000);
     setList([])
   }
-  const edit = (a) => {
-
-  }
+  
 
   return (
     <div className="App flex justify-center   h-screen  items-center ">
       <div className="shadow-md p-3 rounded-md gird  space-y-4 place-items-center  w-[700px] ">
-        <p className="text-center text-2xl text-yellow-400">{msg}</p>
+        <p className="text-center text-2xl text-blue-500">{msg}</p>
         <h1 className="text-4xl text-center">TODO-LIST</h1>
         <div className="">
           <form onSubmit={(e) => fun(e)} className="flex p-1 space-x-3 justify-center" action="">
@@ -58,7 +63,9 @@ function App() {
                 <div className="justify-between flex items-center bg-slate-500/20 rounded-md mx-auto mt-2 w-[300px] p-2" key={a}>
                   <p>{i}</p>
                   <div className="flex space-x-3">
-                    <FiEdit onClick={() => edit(i)} className="cursor-pointer" size={20} />
+
+
+
                     <AiFillDelete onClick={() => dlt(i)} className="cursor-pointer" size={20} />
                   </div>
 
